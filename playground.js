@@ -761,7 +761,7 @@ function domainName(url){
     }
     return result[result.length - 1];
   }
-  return urlArr[urlArr.length - 2]
+  return urlArr[urlArr.length - 2];
 }
 
 // console.log(domainName("http://github.com/carbonfive/raygun"));
