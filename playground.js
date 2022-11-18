@@ -748,7 +748,7 @@ function domainName(url){
   return newArr
 }
 
-function domainName(url){
+function domainName2(url){
   let urlArr = url.split('.');
   let newArr = urlArr[0]
   if (!url.includes('www') && !url.includes('http')){
@@ -768,11 +768,82 @@ function domainName(url){
 // console.log(domainName("http://www.zombie-bites.com"));
 // console.log(domainName("https://www.cnet.com"));
 
-console.log(domainName2("http://google.co.jp"));
-console.log(domainName2("https://www.cnet.com"));
-console.log(domainName2("http://www.zombie-bites.com"));
-console.log(domainName2("http://github.com/carbonfive/raygun"));
+// console.log(domainName2("http://google.co.jp"));
+// console.log(domainName2("https://www.cnet.com"));
+// console.log(domainName2("http://www.zombie-bites.com"));
+// console.log(domainName2("http://github.com/carbonfive/raygun"));
 
 
 
+function toCamelCase(str){
+  if (str.includes('-')) {
+    str = str.replace(/-/g, '_')
+  }
+  let strArr = str.split('_');
+  let result = '';
+  for (let i = 0; i < strArr.length; i++) {
+    let word = strArr[i]
+    if(i > 0) {
+      let y = word.charAt(0)
+      word = word.replace(y, y.toUpperCase())
+     }
+    result += word
+  }
+  return result
+}
 
+function toCamelCase2(str){
+  let regExp=/[-_]\w/ig;
+  let ggg = str.match(regExp)
+  console.log(ggg);
+  return str.replace(regExp,function(match){
+      // console.log(match);
+      return match.charAt(1).toUpperCase();
+   });
+}
+
+// console.log(toCamelCase("the_stealth_warrior"));
+// console.log(toCamelCase("The-Stealth-War"));
+// console.log(toCamelCase2("The-Stealth-War"));
+// console.log(toCamelCase2("the_stealth_warrior"));
+
+// toCamelCase("the-stealth-warrior")
+
+
+function validParentheses(parens) {
+  let newParens = parens.split('()').join('')
+  if (newParens.charAt[0] == ')' || newParens.charAt(newParens.length - 1) == '(') return false
+  if (parens.length == 0) return true
+  if (parens.length % 2 != 0) return false
+  let parensArr = parens.split('')
+  let obj = {}
+  for (let i = 0; i < parensArr.length; i++) {
+    let char = parensArr[i]
+    if(!obj[char]) {
+      obj[char] = 1
+    } else {
+      obj[char]++
+    }
+  }
+  let arr = []
+  for (key in obj) {
+    arr.push(obj[key])
+  }
+  return arr.reduce((a, b) => a - b) == 0 ? true : false
+}
+
+// console.log(validParentheses(")(()))"));
+
+function validParentheses2(parens){
+  let n = 0;
+  for (var i = 0; i < parens.length; i++) {
+    if (parens[i] == '(') n++;
+    if (parens[i] == ')') n--;
+    console.log(n);
+    if (n < 0) return false;
+  }
+  
+  return n == 0;
+}
+
+console.log(validParentheses2(")()()("));
