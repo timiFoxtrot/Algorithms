@@ -533,7 +533,7 @@ function findWord(easyPuzzle, word) {
     arr.push(res);
   }
   console.log(arr, arr.length);
-  return arr.forEach(str => str.includes(word))
+  return arr.some(str => str.includes(word))
 }
 
 let easyPuzzle1 = [
@@ -549,7 +549,7 @@ let easyPuzzle2 = [
   ['t', 't', 'a', 'i']
 ]
 
-// console.log(findWord(easyPuzzle2, 'yktt'));
+// console.log(findWord(easyPuzzle2, 'ktth'));
 
 
 
@@ -846,4 +846,236 @@ function validParentheses2(parens){
   return n == 0;
 }
 
-console.log(validParentheses2(")()()("));
+// console.log(validParentheses2(")()()("));
+
+function reverseMultiply(arr) {
+  let revArr = [...arr].reverse();
+  let result = []
+  for (let i = 0; i < arr.length; i++) {
+    let x = arr[i]
+    for (let j = 0; j < revArr.length; j++) {
+      let y = revArr[j]
+      if(i == j) {
+        result.push(x * y)
+      }
+    }
+  }
+  return result
+}
+// console.log(reverseMultiply([1, 2, 3, 4, 5,]));
+
+function revMultiply (arr) {
+  let result = []
+  for (let i = 0; i < arr.length; i++) {
+    let x = arr[i]
+    result.push(x * (arr.length - i)) 
+  }
+  return result
+}
+
+// console.log(revMultiply([1, 2, 3, 4, 5,]));
+// console.log(revMultiply([5, 4, 6, 7]));
+
+
+function manipulation(arr) {
+  let result = []
+  for(num of arr) {
+    if (num%5 == 0 && num%9 == 0) {
+      result.push(num/15)
+    } else if (num%5 == 0) {
+      result.push(num/5)
+    } else if (num%9 == 0) {
+      result.push(num/9)
+    } else {
+      result.push(num*2)
+    }
+  }
+  return result.reduce((a,b) => a + b)
+}
+
+// console.log(manipulation([15, 45, 25, 4]));
+
+
+
+var cardinalDirections;
+(function (cardinalDirections) {
+    cardinalDirections[cardinalDirections["North"] = 0] = "North";
+    cardinalDirections[cardinalDirections["South"] = 1] = "South";
+    cardinalDirections[cardinalDirections["East"] = 2] = "East";
+    cardinalDirections[cardinalDirections["West"] = 3] = "West";
+})(cardinalDirections || (cardinalDirections = {}));
+// console.log(cardinalDirections);
+var currentDirection = cardinalDirections.East;
+// console.log(currentDirection);
+
+
+
+const user = {firstName:"Mike", lastName: "Reece", age: 31}
+// const {firstName, age} = user
+// const {firstName: Username} = user
+// console.log(firstName);
+// console.log(Username);
+function printName({firstName, lastName}) {
+  console.log(firstName, lastName);
+}
+// printName(user)
+
+
+snail = function(array) {
+  let result = []
+  let length = array.length
+
+  if (array[1].length === undefined) return array
+
+  for (let m = 0; m < length; m++) {
+
+    for (let i = m; i < length; i++) {
+
+      for (let j = m; j < length; j++) {
+        if (i == m) {
+          if(result.includes(array[i][j])) continue
+          result.push(array[i][j])
+        }
+        if (i > m && j == length - 1 - m) {
+          if(result.includes(array[i][j])) continue
+          result.push(array[i][j])
+        }
+      }
+    }
+  
+    for (let i = length -1 - m; i >= 0; i--) {
+  
+      for (let j = i - 1; j >= 0; j--) {
+        if (i == length - 1 - m) {
+          if(result.includes(array[i][j])) continue
+          result.push(array[i][j])
+        }
+        if (j == m) {
+          if(result.includes(array[i][j])) continue
+          result.push(array[i][j])
+        }
+      }
+    }
+  }
+
+  return result
+}
+// console.log(snail([
+//   [1,2,3],
+//   [4,5,6],
+//   [7,8,9]
+// ]));
+
+// console.log(snail([
+//   [1, 2, 3, 4],
+//   [5, 6, 7, 8],
+//   [9, 10, 11, 12],
+//   [13, 14, 15, 16]
+// ]));
+
+// console.log(snail([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]]));
+
+// console.log(snail([
+//   [1, 2, 3, 4, 5, 6],
+//   [20, 21, 22, 23, 24, 7],
+//   [19, 32, 33, 34, 25, 8],
+//   [18, 31, 36, 35, 26, 9],
+//   [17, 30, 29, 28, 27, 10],
+//   [16, 15, 14, 13, 12, 11]
+// ]));
+
+
+
+function validSolution(board){
+  let array1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let length = board.length
+  let result1 = [];
+  let result2 = []
+  let array3 = []
+  let array2;
+
+  // for (let i = 0; i < 3; i++) {
+
+  //   for ( let j = 0; j < 3; j++) {
+  //     let digit = board[i][j]
+  //     array3.push(digit)
+  //   }
+  // }
+  // result1.push(array3);
+
+  // array3 = []
+  // for (let i = 0; i < 3; i++) {
+
+  //   for ( let j = 3; j < 6; j++) {
+  //     let digit = board[i][j]
+  //     array3.push(digit)
+  //   }
+  // }
+  // result1.push(array3);
+  // console.log(result1);
+
+  const util = (x, y, m, n) => {
+    array3 = []
+    for (let i = x; i < y; i++) {
+
+      for ( let j = m; j < n; j++) {
+        let digit = board[i][j]
+        array3.push(digit)
+      }
+    }
+  result1.push(array3.sort((a,b) => a - b))
+  }
+  util(0, 3, 0, 3)
+  util(0, 3, 3, 6)
+  util(0, 3, 6, 9)
+  util(3, 6, 0, 3)
+  util(3, 6, 3, 6)
+  util(3, 6, 6, 9)
+  util(6, 9, 0, 3)
+  util(6, 9, 3, 6)
+  util(6, 9, 6, 9)
+
+  // console.log(result1);
+  let final1 = result1.every(arr => array1.every(num => num == arr[array1.indexOf(num)]) == true);
+  console.log(final1);
+
+
+  for (let i = 0; i < length; i++) {
+    array2 = []
+
+    for (let j = 0; j < length; j++) {
+      let digit = board[i][j]
+      array2.push(digit)
+    }
+
+    array2 = array2.sort((a, b) => a - b);
+
+    result2.push(array2)
+  } 
+  // console.log(result);
+  let final2 = result2.every(arr => array1.every(num => num == arr[array1.indexOf(num)]) == true);
+  console.log(final2);
+  return final2 && final1
+}
+console.log(validSolution([
+  [5, 3, 4, 6, 7, 8, 9, 1, 2],
+  [6, 7, 2, 1, 9, 5, 3, 4, 8],
+  [1, 9, 8, 3, 4, 2, 5, 6, 7],
+  [8, 5, 9, 7, 6, 1, 4, 2, 3],
+  [4, 2, 6, 8, 5, 3, 7, 9, 1],
+  [7, 1, 3, 9, 2, 4, 8, 5, 6],
+  [9, 6, 1, 5, 3, 7, 2, 8, 4],
+  [2, 8, 7, 4, 1, 9, 6, 3, 5],
+  [3, 4, 5, 2, 8, 6, 1, 7, 9]
+]));
+
+// console.log(validSolution([
+//   [5, 3, 4, 6, 7, 8, 9, 1, 2], 
+//   [6, 7, 2, 1, 9, 0, 3, 4, 8],
+//   [1, 0, 0, 3, 4, 2, 5, 6, 0],
+//   [8, 5, 9, 7, 6, 1, 0, 2, 0],
+//   [4, 2, 6, 8, 5, 3, 7, 9, 1],
+//   [7, 1, 3, 9, 2, 4, 8, 5, 6],
+//   [9, 0, 1, 5, 3, 7, 2, 1, 4],
+//   [2, 8, 7, 4, 1, 9, 6, 3, 5],
+//   [3, 0, 0, 4, 8, 1, 1, 7, 9]]));
